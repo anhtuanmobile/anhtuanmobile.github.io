@@ -3,11 +3,32 @@
 // Mobile Menu Toggle
 // =========================
 document.addEventListener('DOMContentLoaded', function () {
-  // Mobile menu
+  // Lazy loading images
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+  if ('loading' in HTMLImageElement.prototype) {
+    lazyImages.forEach(img => {
+      img.src = img.dataset.src;
+    });
+  } else {
+    // Fallback for browsers that don't support lazy loading
+    const lazyLoadScript = document.createElement('script');
+    lazyLoadScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js';
+    document.body.appendChild(lazyLoadScript);
+    lazyLoadScript.onload = function() {
+      const observer = lozad();
+      observer.observe();
+    }
+  }
+
+  // Mobile menu with improved performance
   const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const mobileNav = document.getElementById('mobileNav');
+  const mainNav = document.querySelector('.main-nav');
+  let menuOpen = false;
+
   menuToggle.addEventListener('click', function () {
-    mobileNav.classList.toggle('open');
+    menuOpen = !menuOpen;
+    mainNav.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', menuOpen);
     menuToggle.classList.toggle('open');
   });
 
