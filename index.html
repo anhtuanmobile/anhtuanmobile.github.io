@@ -61,25 +61,150 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <h1>Website Demo</h1>
-    <nav>
-      <a href="index.html">Trang chủ</a> |
-      <a href="san-pham.html">Sản phẩm</a> |
-      <a href="bai-viet.html">Bài viết</a> |
-      <a href="danh-muc.html">Danh mục</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-flex">
+      <a href="/" class="logo" aria-label="Trang chủ Showroom123">
+        <img src="https://via.placeholder.com/160x48?text=Logo" alt="Showroom123 Logo"><!-- TODO: replace with real logo -->
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Sản phẩm</a></li>
+          <li><a href="#">Khuyến mãi</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="header-icons">
+        <button class="search-btn" aria-label="Tìm kiếm">
+          <svg width="24" height="24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="cart-btn" aria-label="Giỏ hàng">
+          <svg width="24" height="24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+        <button class="mobile-menu-toggle" aria-label="Mở menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#">Sản phẩm</a></li>
+        <li><a href="#">Khuyến mãi</a></li>
+        <li><a href="#">Tin tức</a></li>
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
+    </div>
   </header>
 
   <main>
-    <h2>Trang chủ</h2>
-    <p>Chào mừng đến với website của chúng tôi!</p>
+    <!-- Hero Section -->
+    <section class="hero-slider" aria-label="Hero banner">
+      <div class="hero-slides">
+        <div class="hero-slide active">
+          <img src="https://via.placeholder.com/1200x400?text=Banner+1" alt="Banner sản phẩm nổi bật" loading="lazy"><!-- TODO: replace with real banner -->
+          <div class="hero-content">
+            <h1>Chào mừng đến với Showroom123</h1>
+            <p><!-- TODO: replace -->Khám phá các sản phẩm điện tử mới nhất, giá tốt nhất.</p>
+            <a href="#" class="btn-primary">Xem sản phẩm</a>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <img src="https://via.placeholder.com/1200x400?text=Banner+2" alt="Banner khuyến mãi" loading="lazy"><!-- TODO: replace with real banner -->
+          <div class="hero-content">
+            <h2><!-- TODO: replace -->Ưu đãi đặc biệt tháng này</h2>
+            <p><!-- TODO: replace -->Giảm giá lên đến 50% cho nhiều mặt hàng.</p>
+            <a href="#" class="btn-primary">Xem khuyến mãi</a>
+          </div>
+        </div>
+      </div>
+      <button class="hero-prev" aria-label="Slide trước">&#10094;</button>
+      <button class="hero-next" aria-label="Slide sau">&#10095;</button>
+      <div class="hero-dots"></div>
+    </section>
+
+    <!-- Search & Featured Products -->
+    <section class="featured-products-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Sản phẩm nổi bật</h2>
+          <div class="search-bar">
+            <input type="search" id="productSearch" placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm">
+          </div>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <!-- Example product card, repeat as needed -->
+          <article class="product-card" data-title="Điện thoại A">
+            <img src="https://via.placeholder.com/320x240?text=Product+1" alt="Điện thoại A" loading="lazy"><!-- TODO: replace with real product image -->
+            <h3>Điện thoại A <!-- TODO: replace --></h3>
+            <p class="price">5.990.000₫</p>
+            <button class="btn-add-cart" data-product="Điện thoại A">Thêm vào giỏ</button>
+          </article>
+          <article class="product-card" data-title="Laptop B">
+            <img src="https://via.placeholder.com/320x240?text=Product+2" alt="Laptop B" loading="lazy"><!-- TODO: replace with real product image -->
+            <h3>Laptop B <!-- TODO: replace --></h3>
+            <p class="price">12.990.000₫</p>
+            <button class="btn-add-cart" data-product="Laptop B">Thêm vào giỏ</button>
+          </article>
+          <article class="product-card" data-title="Tai nghe C">
+            <img src="https://via.placeholder.com/320x240?text=Product+3" alt="Tai nghe C" loading="lazy"><!-- TODO: replace with real product image -->
+            <h3>Tai nghe C <!-- TODO: replace --></h3>
+            <p class="price">990.000₫</p>
+            <button class="btn-add-cart" data-product="Tai nghe C">Thêm vào giỏ</button>
+          </article>
+          <article class="product-card" data-title="Tablet D">
+            <img src="https://via.placeholder.com/320x240?text=Product+4" alt="Tablet D" loading="lazy"><!-- TODO: replace with real product image -->
+            <h3>Tablet D <!-- TODO: replace --></h3>
+            <p class="price">7.490.000₫</p>
+            <button class="btn-add-cart" data-product="Tablet D">Thêm vào giỏ</button>
+          </article>
+          <!-- Add more product cards as needed -->
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Website Demo</p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Về chúng tôi</h4>
+        <p><!-- TODO: replace -->Showroom123 là nơi cung cấp các sản phẩm điện tử chính hãng, giá tốt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Liên kết</h4>
+        <ul>
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Sản phẩm</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>Địa chỉ: <!-- TODO: replace -->123 Đường ABC, Quận 1, TP.HCM</li>
+          <li>Điện thoại: <a href="tel:+84123456789">0123 456 789</a></li>
+          <li>Email: <a href="mailto:info@showroom123.com">info@showroom123.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kết nối</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><svg width="24" height="24" fill="currentColor"><!-- fb icon --><circle cx="12" cy="12" r="12" fill="#3b5998"/><path d="M15.5 8.5h-2V7.5c0-.4.3-.5.5-.5h1.5V5h-2c-1.1 0-2 .9-2 2v1.5H9v2h2V19h2.5v-6.5h1.7l.3-2z" fill="#fff"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="24" height="24" fill="currentColor"><circle cx="12" cy="12" r="12" fill="#ff0000"/><polygon points="10,8 16,12 10,16" fill="#fff"/></svg></a>
+          <a href="#" aria-label="Zalo"><svg width="24" height="24" fill="currentColor"><circle cx="12" cy="12" r="12" fill="#0068ff"/><text x="7" y="17" font-size="8" fill="#fff">Zalo</text></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Showroom123. <!-- TODO: replace -->Bản quyền thuộc về Showroom123.</p>
+    </div>
   </footer>
 
-  <script src="assets/app.js"></script>
+  <!-- Toast/modal for add to cart -->
+  <div id="cartToast" class="cart-toast" role="alert" aria-live="polite"></div>
+
+  <script src="assets/script.js" defer></script>
 </body>
 </html>
