@@ -846,6 +846,7 @@ ul {
     left: 50%;
     right: auto;
     flex-direction: column;
+    background: #f57c20;
     color: #1f1f1f;
     padding: 24px 20px 32px;
     border-radius: 0;
@@ -868,6 +869,7 @@ ul {
     text-transform: none;
     width: 100%;
     padding: 10px 0;
+    border-bottom: solid 0.5px white;
   }
 
   .menu-item:hover {
