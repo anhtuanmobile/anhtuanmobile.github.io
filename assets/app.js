@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/images/external/tin_7_064a2d9943d14697925c877cc6ba8710_large.jpg',
       title: 'Xếp hạng hiệu suất Android mới nhất - bất ngờ vị trí Xiaomi Mi 17',
       meta: '07/10/2025 · Tin công nghệ',
-      excerpt: 'Bảng xếp hạng hiệu năng Android tháng 10 ghi nhận nhiều bất ngờ khi Xiaomi Mi 17 dẫn đầu với điểm số vượt trội, bỏ xa các đối thủ đến từ Samsung và vivo.'
+      excerpt: 'Xiaomi Mi 17 dẫn đầu với điểm số vượt trội, bỏ xa các đối thủ đến từ Samsung và vivo.'
     }
   ];
 
