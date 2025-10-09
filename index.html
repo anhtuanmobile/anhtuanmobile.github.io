@@ -37,7 +37,7 @@
       </div>
 
       <nav class="main-nav">
-        <div class="menu-items">
+        <div class="menu-items" aria-hidden="true">
           <a href="#" class="menu-item">
             <img src="assets/images/hd_mainmenu_icon1.webp" alt="Điện thoại" class="menu-icon">
             <div class="menu-text">ĐIỆN THOẠI</div>
@@ -71,8 +71,11 @@
             <div class="menu-text">GIỎ HÀNG</div>
             <span class="cart-count">0</span>
           </a>
+          <button class="mobile-menu-close" type="button" aria-label="Đóng menu">
+            <i class="fas fa-times"></i> Đóng
+          </button>
         </div>
-        <button class="mobile-menu-btn" aria-label="Mở menu">
+        <button class="mobile-menu-btn" aria-label="Mở menu" aria-expanded="false">
           <i class="fas fa-bars"></i>
         </button>
       </nav>
@@ -80,35 +83,36 @@
   </header>
 
   <main>
-    <section class="hero" aria-label="Khuyến mãi nổi bật">
-      <div class="hero-slider" id="hero-slider">
-        <div class="hero-track" id="hero-track"></div>
-        <button class="hero-nav prev" id="hero-prev" aria-label="Trước">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="hero-nav next" id="hero-next" aria-label="Tiếp">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        <div class="hero-dots" id="hero-dots"></div>
-      </div>
-    </section>
-
-    <section class="section news-highlight" aria-label="Tin công nghệ">
-      <div class="container news-highlight__layout">
-        <div class="news-highlight__content">
-          <div class="section-heading">
-            <h2 class="section-title">Tin công nghệ</h2>
-          </div>
-          <article class="news-feature" id="news-feature"></article>
-          <div class="news-list" id="news-list"></div>
+    <div class="hero-news-wrapper container">
+      <section class="hero" aria-label="Khuyến mãi nổi bật">
+        <div class="hero-slider" id="hero-slider">
+          <div class="hero-track" id="hero-track"></div>
+          <button class="hero-nav prev" id="hero-prev" aria-label="Trước">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="hero-nav next" id="hero-next" aria-label="Tiếp">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <div class="hero-dots" id="hero-dots"></div>
         </div>
-        <aside class="news-aside">
-          <div class="aside-banner" id="aside-banner-1"></div>
-          <div class="aside-banner" id="aside-banner-2"></div>
-          <div class="aside-banner" id="aside-banner-3"></div>
-        </aside>
-      </div>
-    </section>
+        <div class="hero-tabs" id="hero-tabs"></div>
+      </section>
+
+      <section class="section news-highlight" aria-label="Tin công nghệ">
+        <div class="news-highlight__layout">
+          <div class="news-highlight__content">
+            <div class="section-heading">
+              <h2 class="section-title">Tin công nghệ</h2>
+            </div>
+            <article class="news-feature" id="news-feature"></article>
+          </div>
+          <aside class="news-aside">
+            <div class="aside-banner" id="aside-banner-1"></div>
+            <div class="aside-banner" id="aside-banner-2"></div>
+          </aside>
+        </div>
+      </section>
+    </div>
 
     <section class="promo-full" aria-label="Khuyến mãi hấp dẫn">
       <div class="container" id="promo-full"></div>

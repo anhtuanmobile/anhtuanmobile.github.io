@@ -5,15 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroSlider = document.getElementById('hero-slider');
   const heroTrack = document.getElementById('hero-track');
   const heroDots = document.getElementById('hero-dots');
+  const heroTabs = document.getElementById('hero-tabs');
   const heroPrev = document.getElementById('hero-prev');
   const heroNext = document.getElementById('hero-next');
 
   const categoryList = document.getElementById('category-list');
   const newsFeature = document.getElementById('news-feature');
-  const newsList = document.getElementById('news-list');
   const asideBanner1 = document.getElementById('aside-banner-1');
   const asideBanner2 = document.getElementById('aside-banner-2');
-  const asideBanner3 = document.getElementById('aside-banner-3');
+  const newsAside = document.querySelector('.news-aside');
+  const newsHighlightSection = document.querySelector('.news-highlight');
   const promoFull = document.getElementById('promo-full');
 
   const promoProductsContainer = document.getElementById('promo-products');
@@ -61,22 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ctaText: 'Xem chi tiết',
       ctaLink: '#',
       image: 'https://theme.hstatic.net/1000198144/1001051255/14/ms_banner_img3.jpg?v=430'
-    },
-    {
-      badge: 'Gaming',
-      title: 'Vivo iQOO Z9 Turbo 5G – Bức phá giới hạn',
-      subtitle: 'Snapdragon mạnh mẽ, màn hình 144Hz siêu mượt.',
-      ctaText: 'Mua ngay',
-      ctaLink: '#',
-      image: 'https://theme.hstatic.net/1000198144/1001051255/14/ms_banner_img4.jpg?v=430'
-    },
-    {
-      badge: 'Flagship',
-      title: 'OnePlus Ace 5 5G – Snapdragon 8 Gen 3',
-      subtitle: 'Giảm trực tiếp 2.000.000đ và hỗ trợ trả góp 0%.',
-      ctaText: 'Sở hữu ngay',
-      ctaLink: '#',
-      image: 'https://theme.hstatic.net/1000198144/1001051255/14/ms_banner_img5.jpg?v=430'
     }
   ];
 
@@ -89,26 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Tin tức', icon: 'assets/images/hd_mainmenu_icon6.webp', link: '#' }
   ];
 
-  const newsFeatureData = {
-    image: 'https://cdn.hstatic.net/files/1000198144/article/tin_7_064a2d9943d14697925c877cc6ba8710_large.jpg',
-    title: 'Xếp hạng hiệu suất Android mới nhất - bất ngờ vị trí Xiaomi Mi 17',
-    meta: '07/10/2025 · Hữu Vinh · Tin công nghệ',
-    excerpt: 'Bảng xếp hạng hiệu năng Android tháng 10 ghi nhận nhiều bất ngờ khi Xiaomi Mi 17 dẫn đầu với điểm số vượt trội, bỏ xa các đối thủ đến từ Samsung và vivo.'
-  };
-
-  const newsItems = [
-    {
-      image: 'https://theme.hstatic.net/1000198144/1001051255/14/smallbanner_img1.jpg?v=430',
-      title: 'iPhone 17 Series VN/A chính thức mở bán tại Showroom123',
-      excerpt: 'Đủ màu sắc, ưu đãi trả góp 0%, tặng kèm phụ kiện độc quyền.'
-    },
-    {
-      image: 'https://theme.hstatic.net/1000198144/1001051255/14/smallbanner_img2.jpg?v=430',
-      title: 'Trung tâm sửa chữa 123 nâng cấp phòng sạch chuẩn Apple',
-      excerpt: 'Dịch vụ sửa chữa chính hãng, linh kiện Zin và bảo hành 12 tháng.'
-    }
-  ];
-
   const asideBanners = [
     {
       container: asideBanner1,
@@ -119,13 +84,22 @@ document.addEventListener('DOMContentLoaded', () => {
       container: asideBanner2,
       image: 'https://theme.hstatic.net/1000198144/1001051255/14/smallbanner_img2.jpg?v=430',
       link: '#'
-    },
-    {
-      container: asideBanner3,
-      image: 'https://theme.hstatic.net/1000198144/1001051255/14/home_banner_img.jpg?v=430',
-      link: '#'
     }
   ];
+
+  const newsArticles = [
+    {
+      image: 'https://cdn.hstatic.net/files/1000198144/article/tin_7_064a2d9943d14697925c877cc6ba8710_large.jpg',
+      title: 'Xếp hạng hiệu suất Android mới nhất - bất ngờ vị trí Xiaomi Mi 17',
+      meta: '07/10/2025 · Tin công nghệ',
+      excerpt: 'Bảng xếp hạng hiệu năng Android tháng 10 ghi nhận nhiều bất ngờ khi Xiaomi Mi 17 dẫn đầu với điểm số vượt trội, bỏ xa các đối thủ đến từ Samsung và vivo.'
+    }
+  ];
+
+  const syncHeroNewsHeight = () => {
+    if (!newsHighlightSection) return;
+    newsHighlightSection.style.maxHeight = '';
+  };
 
   const promoBanner = {
     image: 'https://theme.hstatic.net/1000198144/1001051255/14/home_banner_img.jpg?v=430',
@@ -380,22 +354,58 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* Mobile navigation */
+  const mobileMenuCloseBtn = document.querySelector('.mobile-menu-close');
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  }
+
   if (mobileMenuBtn && menuItems) {
     const closeMenu = () => {
+      if (!menuItems.classList.contains('active')) return;
       menuItems.classList.remove('active');
       mobileMenuBtn.classList.remove('active');
       document.body.classList.remove('no-scroll');
+      menuItems.setAttribute('aria-hidden', 'true');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMenu = () => {
+      menuItems.classList.add('active');
+      mobileMenuBtn.classList.add('active');
+      document.body.classList.add('no-scroll');
+      menuItems.setAttribute('aria-hidden', 'false');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
     };
 
     mobileMenuBtn.addEventListener('click', (event) => {
       event.stopPropagation();
-      menuItems.classList.toggle('active');
-      mobileMenuBtn.classList.toggle('active');
-      document.body.classList.toggle('no-scroll', menuItems.classList.contains('active'));
+      if (menuItems.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    if (mobileMenuCloseBtn) {
+      mobileMenuCloseBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        closeMenu();
+      });
+    }
+
+    menuItems.addEventListener('click', (event) => {
+      event.stopPropagation();
     });
 
     document.addEventListener('click', (event) => {
       if (!menuItems.contains(event.target) && event.target !== mobileMenuBtn) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
         closeMenu();
       }
     });
@@ -406,13 +416,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* Hero slider */
-  if (heroSlider && heroTrack && heroDots && heroPrev && heroNext) {
+  if (heroSlider && heroTrack && heroDots && heroTabs && heroPrev && heroNext) {
     let currentSlide = 0;
     let heroIntervalId;
 
     const renderHeroSlides = () => {
       heroTrack.innerHTML = '';
       heroDots.innerHTML = '';
+      heroTabs.innerHTML = '';
 
       heroSlides.forEach((slide, index) => {
         const slideEl = createEl('div', 'hero-slide');
@@ -432,9 +443,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const dot = createEl('button', 'hero-dot');
         dot.type = 'button';
         dot.setAttribute('aria-label', `Chuyển đến slide ${index + 1}`);
-        dot.addEventListener('click', () => updateHeroSlide(index));
+        dot.addEventListener('click', () => {
+          updateHeroSlide(index);
+          startHeroAutoplay();
+        });
         heroDots.appendChild(dot);
+
+        const tab = createEl('button', 'hero-tab', slide.title);
+        tab.type = 'button';
+        tab.setAttribute('aria-label', `Hiển thị slide: ${slide.title}`);
+        tab.addEventListener('click', () => {
+          updateHeroSlide(index);
+          startHeroAutoplay();
+        });
+        heroTabs.appendChild(tab);
       });
+
+      syncHeroNewsHeight();
     };
 
     const updateHeroSlide = (index) => {
@@ -443,6 +468,11 @@ document.addEventListener('DOMContentLoaded', () => {
       heroDots.querySelectorAll('.hero-dot').forEach((dot, dotIndex) => {
         dot.classList.toggle('active', dotIndex === currentSlide);
       });
+      heroTabs.querySelectorAll('.hero-tab').forEach((tab, tabIndex) => {
+        tab.classList.toggle('active', tabIndex === currentSlide);
+      });
+
+      syncHeroNewsHeight();
     };
 
     const stopHeroAutoplay = () => {
@@ -462,9 +492,16 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHeroSlides();
     updateHeroSlide(0);
     startHeroAutoplay();
+    syncHeroNewsHeight();
 
-    heroPrev.addEventListener('click', () => updateHeroSlide(currentSlide - 1));
-    heroNext.addEventListener('click', () => updateHeroSlide(currentSlide + 1));
+    heroPrev.addEventListener('click', () => {
+      updateHeroSlide(currentSlide - 1);
+      startHeroAutoplay();
+    });
+    heroNext.addEventListener('click', () => {
+      updateHeroSlide(currentSlide + 1);
+      startHeroAutoplay();
+    });
 
     heroSlider.addEventListener('mouseenter', stopHeroAutoplay);
     heroSlider.addEventListener('mouseleave', startHeroAutoplay);
@@ -487,37 +524,35 @@ document.addEventListener('DOMContentLoaded', () => {
   /* News */
   if (newsFeature) {
     newsFeature.innerHTML = '';
-    const thumb = createEl('img');
-    thumb.src = newsFeatureData.image;
-    thumb.alt = newsFeatureData.title;
-    const content = createEl('div', 'news-feature__content');
-    const title = createEl('h3', 'news-feature__title', newsFeatureData.title);
-    const meta = createEl('span', 'news-feature__meta', newsFeatureData.meta);
-    const excerpt = createEl('p', 'news-feature__excerpt', newsFeatureData.excerpt);
-    const link = createEl('a', 'btn-primary', 'Đọc ngay');
-    link.href = '#';
-    content.append(title, meta, excerpt, link);
-    newsFeature.append(thumb, content);
-  }
-
-  if (newsList) {
-    newsList.innerHTML = '';
-    newsItems.forEach((article) => {
+    newsArticles.forEach((article) => {
       const card = createEl('article', 'news-card');
       const thumb = createEl('img');
       thumb.src = article.image;
       thumb.alt = article.title;
+
       const content = createEl('div');
       const title = createEl('h3', null, article.title);
-      const excerpt = createEl('p', null, article.excerpt);
-      content.append(title, excerpt);
+      if (article.meta) {
+        const meta = createEl('span', 'news-card__meta', article.meta);
+        content.appendChild(meta);
+      }
+      if (article.excerpt) {
+        const excerpt = createEl('p', null, article.excerpt);
+        content.appendChild(excerpt);
+      }
+
       card.append(thumb, content);
-      newsList.appendChild(card);
+      newsFeature.appendChild(card);
     });
+
+    syncHeroNewsHeight();
   }
 
-  asideBanners.forEach((banner) => {
-    if (banner.container) {
+  const renderAsideBanners = () => {
+    if (!newsAside) return;
+    asideBanners.forEach((banner) => {
+      if (!banner.container) return;
+      banner.container.innerHTML = '';
       const link = createEl('a');
       link.href = banner.link;
       const img = createEl('img');
@@ -525,8 +560,10 @@ document.addEventListener('DOMContentLoaded', () => {
       img.alt = 'Banner quảng cáo';
       link.appendChild(img);
       banner.container.appendChild(link);
-    }
-  });
+    });
+  };
+
+  renderAsideBanners();
 
   if (promoFull) {
     const link = createEl('a');
@@ -573,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pricing.appendChild(old);
       }
 
-      const installment = createEl('div', 'product-installment', 'Trả góp 0% · Giao nhanh 2h');
+      const installment = createEl('div', 'product-installment', 'Trả góp 0% · Giao nội thành');
 
       item.append(thumb, name, pricing, installment);
       container.appendChild(item);
@@ -585,4 +622,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts(phoneProductsContainer, productSections.phones);
   renderProducts(tabletProductsContainer, productSections.tablets);
   renderProducts(accessoryProductsContainer, productSections.accessories);
+
+  window.addEventListener('resize', syncHeroNewsHeight);
 });
