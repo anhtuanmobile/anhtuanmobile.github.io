@@ -109,6 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const productSections = {
     promo: [
       {
+        name: 'iPhone 12 Pro Max 128GB | 256GB Like New',
+        price: '11,490,000₫',
+        oldPrice: '13,490,000₫',
+        discount: '-15%',
+        badge: 'assets/images/external/hot_sale.png',
+        image: 'assets/images/external/iphone_12_pro_vang_1e36ab0fcd1b4afa8a0a26da64b89790_medium.jpg'
+      },
+      {
+        name: 'iPhone 12 Pro 128GB | 256GB Like New',
+        price: '9,290,000₫',
+        oldPrice: '10,390,000₫',
+        discount: '-15%',
+        badge: 'assets/images/external/hot_sale.png',
+        image: 'assets/images/external/iphone_12_pro_xanh_639df71ce0fe4f549324d7fb7dc16b3a_medium.jpg'
+      },
+      {
         name: 'Vivo iQOO Z10 Turbo 5G 12GB/256GB',
         price: '6,390,000₫',
         oldPrice: '7,490,000₫',
@@ -225,14 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/images/external/add_3_cf9ec50bda3e41a29ab6e5a65a5b27a5_medium.jpg'
       },
       {
-        name: 'Xiaomi 15T Pro 5G 12GB/512GB Chính Hãng',
-        price: '15,990,000₫',
-        oldPrice: '19,490,000₫',
-        discount: '-18%',
-        badge: 'assets/images/external/orther.png',
-        image: 'assets/images/external/add_2_610944d05fba47a599c752efeaab2342_medium.jpg'
-      },
-      {
         name: 'Xiaomi 15T 5G 12GB/512GB Chính Hãng',
         price: '11,990,000₫',
         oldPrice: '14,990,000₫',
@@ -335,13 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
         oldPrice: '450,000₫',
         discount: '-27%',
         image: 'assets/images/external/hoco-w35-max-13_3c414c591db541dfa4ee69b0abeaa6eb_medium.jpg'
-      },
-      {
-        name: 'Kích Sóng Wifi Tenda A9',
-        price: '245,000₫',
-        oldPrice: '290,000₫',
-        discount: '-16%',
-        image: 'assets/images/external/tenda_a9_1_b083feead8c8410894b5a76d98935a01_medium.jpg'
       },
       {
         name: 'Tẩu Sạc Xe Hơi Hoco Z52 38W',
